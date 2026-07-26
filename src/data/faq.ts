@@ -5,58 +5,58 @@ export interface FaqItem {
 
 export const faqs: FaqItem[] = [
   {
-    question: 'What are your hours?',
+    question: 'Is Fairview Laundromat open 24 hours?',
     answer:
-      'Fairview Laundromat is open 24 hours a day, 7 days a week — including weekends and holidays. You can do laundry on your own schedule, day or night.',
+      'Yes — Fairview Laundromat is open 24 hours a day, 7 days a week, including weekends and holidays.',
   },
   {
-    question: 'Where are you located?',
+    question: 'What payment methods are accepted?',
     answer:
-      'We are located at 22229 Lorain Road in Fairview Park, Ohio, 44126. The laundromat is easy to find on Lorain Road with free on-site parking.',
+      'We accept coins, credit and debit cards, laundry cards, and available contactless payment options.',
   },
   {
-    question: 'What payment methods do you accept?',
+    question: 'Can I wash a comforter?',
     answer:
-      'We accept coins, credit cards, debit cards, laundry cards, and contactless payment methods for your convenience.',
+      'Yes. We have large-capacity washers designed to handle comforters, blankets, and other bulky items.',
   },
   {
-    question: 'Do you have large-capacity machines?',
+    question: 'Is free Wi-Fi available?',
     answer:
-      'Yes. We have washers and dryers in multiple sizes, including large-capacity machines that can handle comforters, blankets, bedding, and family-sized loads.',
+      'Yes. Free Wi-Fi is available for all customers during your visit.',
   },
   {
-    question: 'Can I wash large items like comforters?',
+    question: 'Is parking available?',
     answer:
-      'Absolutely. Our high-capacity washers and dryers are designed to handle bulky items like comforters, blankets, sleeping bags, and large bedding with ease.',
+      'Yes. Free on-site parking is available for all customers.',
   },
   {
-    question: 'Do you offer wash-and-fold or drop-off service?',
+    question: 'Can I buy detergent there?',
     answer:
-      'No. Fairview Laundromat is a self-service facility. You handle your own washing, drying, and folding using our machines and amenities.',
+      'Yes. Detergent and bleach are available for purchase from on-site vending machines.',
   },
   {
-    question: 'Is there Wi-Fi available?',
+    question: 'When is the restroom available?',
     answer:
-      'Yes. Free Wi-Fi is available for all customers. Bring your device and stay productive or entertained while your laundry runs.',
+      'Restroom hours are normally 6:00 a.m. to 10:00 p.m. The laundromat itself remains open 24 hours.',
   },
   {
-    question: 'Is there an attendant on site?',
+    question: 'Can carts go to the parking lot?',
     answer:
-      'Attendant availability may vary depending on the time of day. The laundromat remains accessible and open 24 hours regardless.',
+      'For cleanliness and availability, please keep laundry carts inside the facility.',
   },
   {
-    question: 'Are laundry supplies available for purchase?',
+    question: 'Is an attendant always present?',
     answer:
-      'Yes. Detergent, bleach, and other laundry supplies are available from on-site vending machines.',
+      'Attendant availability may vary depending on the time of day. Some periods may be unattended, but the laundromat remains open 24 hours.',
   },
   {
-    question: 'Is the facility wheelchair accessible?',
+    question: 'Why does my card show a larger pending amount?',
     answer:
-      'Yes. Fairview Laundromat is designed to be wheelchair accessible so all customers can use the facility comfortably.',
+      'Card transactions may display a temporary pending authorization while your bank verifies the payment. The pending amount is not necessarily the final laundry charge.',
   },
   {
-    question: 'Is there parking available?',
+    question: 'What are current machine prices?',
     answer:
-      'Yes. Free on-site parking is available for all customers visiting the laundromat.',
+      'Machine prices are displayed on each machine inside the laundromat and vary by washer or dryer size and cycle type.',
   },
 ];

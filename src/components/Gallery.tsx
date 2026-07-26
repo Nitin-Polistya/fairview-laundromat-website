@@ -21,18 +21,12 @@ export default function Gallery() {
         <ResponsiveImage image={images[3]} className="aspect-square shadow-md" />
         <ResponsiveImage image={images[4]} className="aspect-square shadow-md" />
       </div>
-      {/* Mobile layout: scrollable row */}
+      {/* Mobile layout: swipeable scrollable row */}
       <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
         {images.map((img) => (
           <div key={img.path} className="snap-center shrink-0 w-[280px]">
             <ResponsiveImage image={img} className="aspect-[4/3] w-[280px] shadow-md" />
           </div>
-        ))}
-      </div>
-      {/* Mobile second row */}
-      <div className="md:hidden grid grid-cols-2 gap-4 mt-4">
-        {images.slice(0, 4).map((img) => (
-          <ResponsiveImage key={img.path} image={img} className="aspect-square shadow-md" />
         ))}
       </div>
     </section>

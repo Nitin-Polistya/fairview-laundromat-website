@@ -22,6 +22,7 @@ export default function FAQ() {
               className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm"
             >
               <button
+                id={`faq-btn-${i}`}
                 onClick={() => toggle(i)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${i}`}
