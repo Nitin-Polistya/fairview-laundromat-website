@@ -9,7 +9,7 @@ export const business = {
     state: 'OH',
     zip: '44126',
   },
-  hoursLabel: 'Open 24 Hours • 7 Days a Week',
+  hoursLabel: 'Open 24 hours daily',
   directionsUrl:
     'https://www.google.com/maps/dir/?api=1&destination=Fairview+Laundromat%2C+22229+Lorain+Road%2C+Fairview+Park%2C+OH+44126',
   disclaimer:
@@ -18,4 +18,4 @@ export const business = {
 
 export const fullAddress = `${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.zip}`;
 
-export const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`;
+export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(`${business.name}, ${fullAddress}`)}&output=embed`;

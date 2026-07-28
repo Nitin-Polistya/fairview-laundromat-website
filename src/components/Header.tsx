@@ -8,6 +8,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -15,22 +16,21 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    const previousOverflow = document.body.style.overflow;
+    if (menuOpen) document.body.style.overflow = 'hidden';
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) return;
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && menuOpen) {
-        closeMenu();
-      }
+      if (e.key === 'Escape') closeMenu();
     }
+
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen, closeMenu]);
@@ -56,7 +56,7 @@ export default function Header() {
       }
     }
     document.addEventListener('keydown', trap);
-    first?.focus();
+    closeBtnRef.current?.focus();
     return () => document.removeEventListener('keydown', trap);
   }, [menuOpen]);
 
@@ -73,12 +73,12 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Main navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-text-secondary hover:text-teal transition-colors"
+                className="text-sm font-medium text-text-secondary hover:text-teal-dark transition-colors"
               >
                 {link.label}
               </a>
@@ -86,12 +86,12 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <a
               href={directionsAction.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-full bg-teal text-white text-sm font-semibold hover:bg-teal/90 transition-colors"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-teal-dark text-white text-sm font-semibold hover:bg-teal-dark/90 transition-colors min-h-11"
             >
               {directionsAction.label}
             </a>
@@ -100,9 +100,10 @@ export default function Header() {
           {/* Mobile hamburger */}
           <button
             ref={menuBtnRef}
-            className="md:hidden p-2 rounded-lg hover:bg-pale-teal/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-pale-teal/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark min-h-11 min-w-11"
+            onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
             aria-expanded={menuOpen}
+            aria-controls={menuOpen ? 'mobile-menu-drawer' : undefined}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X className="w-6 h-6 text-navy" /> : <Menu className="w-6 h-6 text-navy" />}
@@ -113,62 +114,66 @@ export default function Header() {
       {/* Mobile drawer overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
           onClick={closeMenu}
           aria-hidden="true"
         />
       )}
 
       {/* Mobile drawer */}
-      <div
-        ref={drawerRef}
-        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 shadow-xl transform transition-transform duration-200 md:hidden ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-        role="dialog"
-        aria-label="Mobile navigation"
-        aria-modal="true"
-      >
-        <div className="flex items-center justify-between p-4 border-b border-border">
-          <Logo compact />
-          <button
-            onClick={closeMenu}
-            className="p-2 rounded-lg hover:bg-pale-teal/50"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5 text-navy" />
-          </button>
-        </div>
-        <nav className="flex flex-col p-4 gap-2" aria-label="Mobile navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+      {menuOpen && (
+        <div
+          ref={drawerRef}
+          id="mobile-menu-drawer"
+          className="fixed top-0 right-0 h-full w-80 max-w-[calc(100vw-2rem)] bg-white z-50 shadow-xl lg:hidden"
+          role="dialog"
+          aria-labelledby="mobile-menu-title"
+          aria-modal="true"
+        >
+          <div className="flex items-center justify-between p-4 border-b border-border">
+            <Logo compact />
+            <button
+              ref={closeBtnRef}
+              type="button"
               onClick={closeMenu}
-              className="text-base font-medium text-text-secondary hover:text-teal py-2 transition-colors"
+              className="p-2 rounded-lg hover:bg-pale-teal/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark min-h-11 min-w-11"
+              aria-label="Close menu"
             >
-              {link.label}
+              <X className="w-5 h-5 text-navy mx-auto" />
+            </button>
+          </div>
+          <h2 id="mobile-menu-title" className="sr-only">Mobile navigation</h2>
+          <nav className="flex flex-col p-4 gap-1" aria-label="Mobile navigation">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="text-base font-medium text-text-secondary hover:text-teal-dark py-3 min-h-11 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <hr className="my-2 border-border" />
+            <a
+              href={callAction.href}
+              onClick={closeMenu}
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-navy text-white font-semibold hover:bg-navy/90 transition-colors min-h-12"
+            >
+              Call {business.phone}
             </a>
-          ))}
-          <hr className="my-2 border-border" />
-          <a
-            href={callAction.href}
-            onClick={closeMenu}
-            className="flex items-center justify-center gap-2 py-3 rounded-xl bg-navy text-white font-semibold hover:bg-navy/90 transition-colors"
-          >
-            Call {business.phone}
-          </a>
-          <a
-            href={directionsAction.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-            className="flex items-center justify-center gap-2 py-3 rounded-xl bg-teal text-white font-semibold hover:bg-teal/90 transition-colors"
-          >
-            {directionsAction.label}
-          </a>
-        </nav>
-      </div>
+            <a
+              href={directionsAction.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-teal-dark text-white font-semibold hover:bg-teal-dark/90 transition-colors min-h-12"
+            >
+              {directionsAction.label}
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

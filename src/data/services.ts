@@ -10,38 +10,38 @@ export interface ServiceItem {
 export const services: ServiceItem[] = [
   {
     icon: Shirt,
-    title: 'Everyday Laundry',
+    title: 'Everyday Self-Service',
     description:
-      'Handle your regular laundry with clean, well-maintained washers and dryers available whenever you need them.',
+      'Self-service washers and dryers are available for regular laundry loads.',
   },
   {
     icon: Users,
     title: 'Family-Sized Loads',
     description:
-      'Larger machines handle family laundry in fewer trips, saving you time and effort each week.',
+      'Machines in multiple sizes can accommodate larger household loads.',
   },
   {
     icon: Bed,
     title: 'Bedding and Comforters',
     description:
-      'Bulky bedding, blankets, and comforters fit comfortably in spacious high-capacity machines.',
+      'Larger machines are available for bedding, blankets, and comforters.',
   },
   {
     icon: Wind,
     title: 'Self-Service Drying',
     description:
-      'Efficient dryers with straightforward settings get your clothes dry and ready to fold.',
+      'Self-service dryers are available with settings shown on each machine.',
   },
   {
     icon: ShoppingBag,
     title: 'Laundry Supplies',
     description:
-      'Detergent, bleach, and other laundry essentials are available for purchase on-site.',
+      'Laundry supplies may be available for purchase from on-site vending machines.',
   },
   {
     icon: Clock,
     title: 'Open All Day',
     description:
-      'No appointments or time restrictions — come in whenever it fits your schedule, day or night.',
+      'The listed 24-hour schedule supports laundry visits throughout the day and night.',
   },
 ];

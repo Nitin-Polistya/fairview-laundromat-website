@@ -16,6 +16,7 @@ import Location from './components/Location';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import MobileActionBar from './components/MobileActionBar';
+import Reveal from './components/Reveal';
 
 export default function App() {
   return (
@@ -25,26 +26,24 @@ export default function App() {
       </a>
       <AnnouncementBar />
       <Header />
-      <main id="main-content">
-        <Hero />
-        <TrustStrip />
-        <About />
-        <Services />
-        <Machines />
-        <PaymentOptions />
-        <Amenities />
-        <WhyChooseFairview />
-        <Gallery />
-        <ReviewThemes />
-        <HoursAndPolicies />
-        <FAQ />
-        <Location />
-        <FinalCTA />
+      <main id="main-content" className="focus:outline-none">
+        <Reveal><Hero /></Reveal>
+        <Reveal delay={40}><TrustStrip /></Reveal>
+        <Reveal><About /></Reveal>
+        <Reveal delay={40}><Services /></Reveal>
+        <Reveal><Machines /></Reveal>
+        <Reveal delay={40}><PaymentOptions /></Reveal>
+        <Reveal><Amenities /></Reveal>
+        <Reveal delay={40}><WhyChooseFairview /></Reveal>
+        <Reveal><Gallery /></Reveal>
+        <Reveal delay={40}><ReviewThemes /></Reveal>
+        <Reveal><HoursAndPolicies /></Reveal>
+        <Reveal delay={40}><FAQ /></Reveal>
+        <Reveal><Location /></Reveal>
+        <Reveal delay={40}><FinalCTA /></Reveal>
       </main>
       <Footer />
       <MobileActionBar />
-      {/* Bottom padding for mobile action bar */}
-      <div className="h-14 md:hidden" aria-hidden="true" />
     </>
   );
 }

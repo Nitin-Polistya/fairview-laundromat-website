@@ -2,15 +2,8 @@ import { Check } from 'lucide-react';
 import { business } from '../data/business';
 import { heroImage } from '../data/images';
 import { directionsAction } from '../data/navigation';
+import { trustItems } from '../data/trust';
 import ResponsiveImage from './ResponsiveImage';
-
-const trustItems = [
-  'Open 24/7',
-  'Large-capacity washers',
-  'Coins/cards/contactless',
-  'Free Wi-Fi',
-  'Free parking',
-];
 
 export default function Hero() {
   return (
@@ -18,16 +11,16 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Text column */}
         <div>
-          <p className="text-teal text-sm font-semibold tracking-widest uppercase mb-4">
-            OPEN 24 HOURS • EVERY DAY
+          <p className="text-teal-dark text-sm font-semibold tracking-widest uppercase mb-4">
+            {business.hoursLabel}
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy leading-tight mb-6">
             Clean Laundry, Any Time of Day
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed mb-8 max-w-lg">
-            Fairview Laundromat offers clean, convenient self-service laundry on Lorain
-            Road in Fairview Park. Handle everyday loads, bedding, and bulky items with
-            machines in multiple sizes—all on your schedule.
+            Fairview Laundromat offers self-service laundry at {business.address.street}
+            in {business.address.city}. Machines in multiple sizes are available for
+            everyday laundry, bedding, and bulkier items.
           </p>
 
           {/* CTA buttons */}
@@ -36,13 +29,13 @@ export default function Hero() {
               href={directionsAction.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-teal text-white font-semibold text-base hover:bg-teal/90 transition-colors min-h-[48px]"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-teal-dark text-white font-semibold text-base hover:bg-teal-dark/90 transition-colors min-h-12"
             >
               {directionsAction.label}
             </a>
             <a
               href={business.phoneHref}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 border-navy text-navy font-semibold text-base hover:bg-navy hover:text-white transition-colors min-h-[48px]"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 border-navy text-navy font-semibold text-base hover:bg-navy hover:text-white transition-colors min-h-12"
             >
               Call {business.phone}
             </a>
@@ -50,10 +43,10 @@ export default function Hero() {
 
           {/* Trust items */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2">
-            {trustItems.map((item) => (
-              <div key={item} className="flex items-center gap-2 text-sm text-text-secondary">
+            {trustItems.slice(0, 3).map((item) => (
+              <div key={item.title} className="flex items-center gap-2 text-sm text-text-secondary">
                 <Check className="w-4 h-4 text-teal shrink-0" aria-hidden="true" />
-                <span>{item}</span>
+                <span>{item.title}</span>
               </div>
             ))}
           </div>
@@ -68,10 +61,10 @@ export default function Hero() {
           />
           {/* Badge pills */}
           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 text-xs font-semibold text-navy shadow-md">
-            Serving the community for more than three decades
+            Self-service laundry
           </div>
-          <div className="absolute bottom-4 right-4 bg-teal text-white rounded-full px-4 py-2 text-xs font-semibold shadow-md">
-            Open 24/7
+          <div className="absolute bottom-4 right-4 bg-teal-dark text-white rounded-full px-4 py-2 text-xs font-semibold shadow-md">
+            {business.hoursLabel}
           </div>
         </div>
       </div>

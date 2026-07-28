@@ -4,16 +4,15 @@ import ResponsiveImage from './ResponsiveImage';
 import { machinesImage } from '../data/images';
 
 const features = [
-  'Multiple washer sizes for different load types',
-  'Machines built to handle comforters and blankets',
-  'Family-sized loads done in fewer trips',
-  'Self-service washers and dryers with clear controls',
-  'Prices displayed inside the laundromat',
+  'Machine sizes for everyday and bulkier load types',
+  'Larger washers for comforters, blankets, and bedding',
+  'Self-service washers and dryers with controls on each machine',
+  'Prices and availability displayed inside the laundromat',
 ];
 
 export default function Machines() {
   return (
-    <section id="machines" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="machines" className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SectionHeading heading="More Room for Bigger Loads" />
       <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>

@@ -2,41 +2,54 @@ export interface ImageConfig {
   path: string;
   alt: string;
   label: string;
+  available: boolean;
+  width: number;
+  height: number;
 }
 
 export const images: ImageConfig[] = [
   {
-    path: '/images/fairview-laundromat-storefront-night.jpg',
-    alt: 'Fairview Laundromat storefront at night on Lorain Road',
+    path: '/images/storefront.jpg',
+    alt: 'Fairview Laundromat storefront on Lorain Road',
     label: 'Storefront',
+    available: true,
+    width: 750,
+    height: 1000,
   },
   {
-    path: '/images/fairview-laundromat-interior-wide.jpg',
-    alt: 'Bright interior of Fairview Laundromat with washers and dryers',
-    label: 'Interior',
+    path: '/images/interior.jpg',
+    alt: 'Interior view of Fairview Laundromat with rows of laundry machines',
+    label: 'Main Interior',
+    available: true,
+    width: 750,
+    height: 1000,
   },
   {
-    path: '/images/fairview-laundromat-large-washers.jpg',
-    alt: 'Large-capacity commercial washers at Fairview Laundromat',
+    path: '/images/interior1.jpg',
+    alt: 'Large-capacity washing machines inside Fairview Laundromat',
     label: 'Large Washers',
+    available: true,
+    width: 1000,
+    height: 451,
   },
   {
-    path: '/images/fairview-laundromat-dryers.jpg',
-    alt: 'Commercial dryers at Fairview Laundromat',
-    label: 'Dryers',
+    path: '/images/interior2.jpg',
+    alt: 'Additional view of laundry equipment inside Fairview Laundromat',
+    label: 'Laundry Equipment',
+    available: true,
+    width: 750,
+    height: 1000,
   },
   {
-    path: '/images/fairview-laundromat-payment-area.jpg',
-    alt: 'Payment kiosk and laundry card station at Fairview Laundromat',
-    label: 'Payment Area',
-  },
-  {
-    path: '/images/fairview-laundromat-folding-area.jpg',
-    alt: 'Folding tables and laundry carts at Fairview Laundromat',
-    label: 'Folding Area',
+    path: '/images/interior3.jpg',
+    alt: 'Additional interior view of Fairview Laundromat',
+    label: 'Interior Facility',
+    available: true,
+    width: 750,
+    height: 1000,
   },
 ];
 
-export const heroImage = images[0]; // storefront night
-export const aboutImage = images[1]; // interior wide
-export const machinesImage = images[2]; // large washers
+export const heroImage = images[0];
+export const aboutImage = images[1];
+export const machinesImage = images[2];

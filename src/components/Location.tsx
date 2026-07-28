@@ -1,15 +1,16 @@
 import { MapPin, Phone, Clock } from 'lucide-react';
 import SectionHeading from './SectionHeading';
-import { business, fullAddress, mapsEmbedUrl } from '../data/business';
+import { business, fullAddress, mapEmbedUrl } from '../data/business';
 import { directionsAction } from '../data/navigation';
 
 export default function Location() {
   return (
-    <section id="location" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="location" className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SectionHeading heading="Conveniently Located on Lorain Road" />
       <p className="text-center text-text-secondary max-w-2xl mx-auto mb-12">
-        We're easy to find at 22229 Lorain Road in Fairview Park, Ohio. Stop in any
-        time — we're open 24/7 with free on-site parking.
+        The listed location is 22229 Lorain Road in Fairview Park, Ohio. Publicly listed
+        information indicates that the facility is open 24 hours daily; on-site parking
+        is also listed as available.
       </p>
       <div className="grid md:grid-cols-2 gap-8">
         {/* Address card */}
@@ -22,14 +23,14 @@ export default function Location() {
             </div>
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-teal shrink-0" aria-hidden="true" />
-              <a href={business.phoneHref} className="text-text-secondary hover:text-teal transition-colors">
+              <a href={business.phoneHref} className="text-text-secondary hover:text-teal-dark transition-colors">
                 {business.phone}
               </a>
             </div>
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-teal shrink-0" aria-hidden="true" />
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-teal/10 text-teal text-sm font-semibold">
-                Open 24 hours
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-teal-dark/10 text-teal-dark text-sm font-semibold">
+                {business.hoursLabel}
               </span>
             </div>
           </div>
@@ -38,13 +39,13 @@ export default function Location() {
               href={directionsAction.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-teal text-white font-semibold text-sm hover:bg-teal/90 transition-colors min-h-[48px]"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-teal-dark text-white font-semibold text-sm hover:bg-teal-dark/90 transition-colors min-h-12"
             >
               Get Directions
             </a>
             <a
               href={business.phoneHref}
-              className="inline-flex items-center justify-center px-5 py-3 rounded-xl border-2 border-navy text-navy font-semibold text-sm hover:bg-navy hover:text-white transition-colors min-h-[48px]"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-xl border-2 border-navy text-navy font-semibold text-sm hover:bg-navy hover:text-white transition-colors min-h-12"
             >
               Call Now
             </a>
@@ -52,24 +53,25 @@ export default function Location() {
         </div>
 
         {/* Map */}
-        <div className="rounded-2xl overflow-hidden shadow-sm border border-border">
+        <div className="rounded-2xl overflow-hidden shadow-sm border border-border bg-white">
           <iframe
-            src={mapsEmbedUrl}
-            title={`Map showing ${business.name} at ${fullAddress}`}
+            src={mapEmbedUrl}
+            title="Map showing Fairview Laundromat on Lorain Road in Fairview Park"
             width="100%"
-            height="350"
-            className="w-full"
+            className="w-full h-80 sm:h-96"
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
-          <div className="p-3 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-border p-4">
+            <span className="text-sm text-text-secondary">Use Google Maps for turn-by-turn directions.</span>
             <a
               href={directionsAction.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal text-sm font-medium hover:underline"
+              className="text-teal-dark text-sm font-semibold hover:underline min-h-11 inline-flex items-center"
             >
-              View larger map on Google Maps
+              Open in Google Maps
             </a>
           </div>
         </div>

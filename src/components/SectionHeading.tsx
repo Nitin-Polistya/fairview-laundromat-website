@@ -5,9 +5,9 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({ label, heading }: SectionHeadingProps) {
   return (
-    <div className="text-center max-w-2xl mx-auto mb-12">
+    <div className="text-center max-w-2xl mx-auto mb-10">
       {label && (
-        <p className="text-teal text-sm font-semibold tracking-widest uppercase mb-3">
+        <p className="text-teal-dark text-sm font-semibold tracking-widest uppercase mb-3">
           {label}
         </p>
       )}

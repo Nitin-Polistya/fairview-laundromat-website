@@ -1,5 +1,6 @@
 import { Info } from 'lucide-react';
 import SectionHeading from './SectionHeading';
+import { business } from '../data/business';
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -20,8 +21,8 @@ const notes = [
 
 export default function HoursAndPolicies() {
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <SectionHeading heading="Open Whenever You Need Us" />
+    <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <SectionHeading heading="Hours and Facility Notes" />
       <div className="max-w-lg mx-auto mb-12">
         <div className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm">
           {days.map((day, i) => (
@@ -32,7 +33,7 @@ export default function HoursAndPolicies() {
               }`}
             >
               <span className="font-semibold text-navy">{day}</span>
-              <span className="text-teal font-semibold">Open 24 hours</span>
+              <span className="text-teal-dark font-semibold">{business.hoursLabel}</span>
             </div>
           ))}
         </div>
