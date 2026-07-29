@@ -10,42 +10,42 @@ export interface AmenityItem {
 export const amenities: AmenityItem[] = [
   {
     icon: Wifi,
-    name: 'Free Wi-Fi',
-    description: 'Stay connected while you wait for your laundry.',
+    name: 'Wi-Fi',
+    description: 'Wi-Fi is listed as an available customer amenity.',
   },
   {
     icon: Car,
-    name: 'Free Parking',
-    description: 'Convenient on-site parking available for all customers.',
+    name: 'On-site Parking',
+    description: 'On-site parking is listed as available.',
   },
   {
     icon: Snowflake,
     name: 'Air Conditioning',
-    description: 'Climate-controlled comfort no matter the weather outside.',
+    description: 'Air conditioning is listed as an available facility feature.',
   },
   {
     icon: Table2,
     name: 'Folding Tables',
-    description: 'Plenty of clean, spacious tables for folding your laundry.',
+    description: 'Folding tables are listed as available inside the facility.',
   },
   {
     icon: ShoppingCart,
     name: 'Laundry Carts',
-    description: 'Rolling carts make it easy to move laundry between machines.',
+    description: 'Laundry carts are available for moving loads inside the facility.',
   },
   {
     icon: SprayCan,
-    name: 'Detergent & Bleach',
-    description: 'Laundry supplies available from on-site vending machines.',
+    name: 'Laundry Supplies',
+    description: 'Laundry supplies may be available from on-site vending machines.',
   },
   {
     icon: Sun,
     name: 'Bright Interior',
-    description: 'Well-lit, clean environment for a comfortable experience.',
+    description: 'Customer feedback commonly mentions a bright interior.',
   },
   {
     icon: Accessibility,
     name: 'Wheelchair Accessible',
-    description: 'The facility is designed for access by all customers.',
+    description: 'The facility is listed as wheelchair accessible.',
   },
 ];

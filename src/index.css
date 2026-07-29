@@ -3,6 +3,7 @@
 @theme {
   --color-navy: #123142;
   --color-teal: #0EA7A0;
+  --color-teal-dark: #087B76;
   --color-pale-teal: #DFF7F5;
   --color-warm-white: #FAFCFB;
   --color-text-primary: #1D2930;
@@ -31,6 +32,7 @@ body {
   background-color: var(--color-warm-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,6 +57,29 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
 }
 
+.mobile-action-bar-safe-area {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  .mobile-action-bar-safe-area {
+    padding-bottom: 3rem;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition: opacity 480ms ease-out, transform 480ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -64,5 +89,13 @@ h1, h2, h3, h4, h5, h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
   }
 }

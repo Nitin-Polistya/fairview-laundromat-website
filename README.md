@@ -1,75 +1,77 @@
-# React + TypeScript + Vite
+# Fairview Laundromat demonstration website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains an unofficial owner-demonstration website for Fairview Laundromat, a self-service laundry business listed at 22229 Lorain Road, Fairview Park, OH 44126.
 
-Currently, two official plugins are available:
+> Demo Website — Created by Nitin Sharma. This is an unofficial demonstration and is not affiliated with, authorized by, or endorsed by Fairview Laundromat. Business information is based on publicly available sources and may change.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technology
 
-## React Compiler
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS v4
+- Lucide React icons
+- npm for package management
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local development
 
-## Expanding the ESLint configuration
+Install dependencies and start the Vite development server:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Create a production build with:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
 ```
+
+Run the repository lint checks with:
+
+```bash
+npm run lint
+```
+
+## Project structure
+
+- `src/App.tsx` — page composition and landmark structure
+- `src/components/` — presentational sections and accessible interactions
+- `src/components/Reveal.tsx` — native IntersectionObserver scroll-reveal wrapper
+- `src/data/business.ts` — business identity, address, phone, hours, directions, and disclaimer
+- `src/data/images.ts` — centralized image paths, labels, alt text, and dimensions
+- `src/data/faq.ts` — approved FAQ topics and stable accordion IDs
+- `src/data/services.ts`, `src/data/amenities.ts`, `src/data/payments.ts`, `src/data/trust.ts` — content data rendered by sections
+- `src/index.css` — Tailwind theme tokens, focus styles, motion preferences, and mobile safe-area handling
+- `public/` — static assets such as the favicon and the optional image directory
+
+## Image setup
+
+The site currently uses these five existing image assets under `public/images/`:
+
+- `storefront.jpg` — storefront
+- `interior.jpg` — interior
+- `interior1.jpg` — washer row
+- `interior2.jpg` — laundry equipment
+- `interior3.jpg` — additional interior facility view
+
+The existing photographs were preserved as supplied; no photographs were downloaded or fabricated. The reusable image component still renders a labeled fallback if a future asset is unavailable, without showing a broken-image icon.
+
+## Deployment notes
+
+This is a static Vite application. Build the site with `npm run build`, then serve the generated `dist/` directory with the chosen static host. Do not deploy or represent this demonstration as an official business website without owner approval.
+
+The page intentionally keeps `noindex, nofollow` in `index.html` and does not include a canonical domain, business schema, review schema, ratings, or ownership verification.
+
+## Converting to an owner-approved official site
+
+Before launch, obtain written owner approval, confirm every business fact and policy, replace or approve the image assets, verify the phone/address/hours/directions links, review the disclaimer and metadata, and decide whether indexing should be enabled. Only then should the site be connected to an official domain or deployed publicly as the business website.
+
+## Known manual verification items
+
+- Confirm current facility amenities, payment options, restroom policy, cart policy, and attendant availability with the owner.
+- Test the Google Maps embed and directions link in the intended production environment.
+- Add only owner-approved photographs and mark each matching image configuration as available.
+- Check the final UI with keyboard navigation, a screen reader, and mobile Safari safe-area behavior.
+
+Creator attribution: Nitin Sharma.

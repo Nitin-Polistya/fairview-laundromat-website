@@ -7,12 +7,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white/80 py-12 px-4 sm:px-6 lg:px-8" role="contentinfo">
+    <footer className="bg-navy text-white/80 py-12 px-4 sm:px-6 lg:px-8 mobile-action-bar-safe-area" role="contentinfo">
       <div className="max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
-            <Logo compact />
+            <Logo compact variant="light" />
             <div className="mt-4 space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-teal shrink-0" aria-hidden="true" />
@@ -26,7 +26,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-teal shrink-0" aria-hidden="true" />
-                <span>Open 24/7</span>
+                <span>{business.hoursLabel}</span>
               </div>
             </div>
           </div>
@@ -71,10 +71,10 @@ export default function Footer() {
 
         <hr className="border-white/20 mb-6" />
 
-        <p className="text-xs text-white/60 leading-relaxed mb-4 max-w-3xl">
+        <p className="text-sm text-white/75 leading-relaxed mb-4 max-w-3xl">
           {business.disclaimer}
         </p>
-        <p className="text-xs text-white/60">
+        <p className="text-sm text-white/75">
           Website demonstration &copy; {currentYear} Nitin Sharma.
         </p>
       </div>

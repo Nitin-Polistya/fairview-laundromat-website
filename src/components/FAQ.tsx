@@ -4,29 +4,32 @@ import SectionHeading from './SectionHeading';
 import { faqs } from '../data/faq';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
-  const toggle = useCallback((index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+  const toggle = useCallback((id: string) => {
+    setOpenId((prev) => (prev === id ? null : id));
   }, []);
 
   return (
-    <section id="faq" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="faq" className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SectionHeading heading="Frequently Asked Questions" />
       <div className="max-w-3xl mx-auto space-y-3">
-        {faqs.map((faq, i) => {
-          const isOpen = openIndex === i;
+        {faqs.map((faq) => {
+          const triggerId = `faq-trigger-${faq.id}`;
+          const panelId = `faq-panel-${faq.id}`;
+          const isOpen = openId === faq.id;
           return (
             <div
-              key={i}
+              key={faq.id}
               className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm"
             >
               <button
-                id={`faq-btn-${i}`}
-                onClick={() => toggle(i)}
+                id={triggerId}
+                type="button"
+                onClick={() => toggle(faq.id)}
                 aria-expanded={isOpen}
-                aria-controls={`faq-panel-${i}`}
-                className="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-navy hover:bg-pale-teal/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-inset rounded-2xl"
+                aria-controls={panelId}
+                className="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-navy hover:bg-pale-teal/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-dark focus-visible:ring-inset rounded-2xl min-h-14"
               >
                 <span>{faq.question}</span>
                 <ChevronDown
@@ -37,15 +40,14 @@ export default function FAQ() {
                 />
               </button>
               <div
-                id={`faq-panel-${i}`}
+                id={panelId}
                 role="region"
-                aria-labelledby={`faq-btn-${i}`}
-                className={`grid transition-all duration-200 ease-in-out ${
-                  isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
+                aria-labelledby={triggerId}
+                hidden={!isOpen}
+                className="border-t border-border"
               >
                 <div className="overflow-hidden">
-                  <p className="px-6 pb-4 text-text-secondary text-sm leading-relaxed">
+                  <p className="px-6 py-4 text-text-secondary text-base leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

@@ -3,7 +3,7 @@ import { amenities } from '../data/amenities';
 
 export default function Amenities() {
   return (
-    <section id="amenities" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="amenities" className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SectionHeading heading="Comfort and Convenience While You Wash" />
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {amenities.map((item) => (
@@ -13,7 +13,7 @@ export default function Amenities() {
             </div>
             <div>
               <h3 className="font-semibold text-navy text-sm mb-1">{item.name}</h3>
-              <p className="text-text-secondary text-xs leading-relaxed">{item.description}</p>
+              <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
             </div>
           </div>
         ))}
